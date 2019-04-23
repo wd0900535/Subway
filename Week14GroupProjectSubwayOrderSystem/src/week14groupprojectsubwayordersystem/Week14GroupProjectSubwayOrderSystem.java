@@ -6,17 +6,21 @@
 package week14groupprojectsubwayordersystem;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -29,37 +33,68 @@ import javafx.stage.Stage;
 public class Week14GroupProjectSubwayOrderSystem extends Application {    
     @Override
     public void start(Stage primaryStage) {
-        //create Size Of Sandwich TextField
-        TextField tfSandwichSize = new TextField("Size Of Sandwich");
-        tfSandwichSize.setAlignment(Pos.BASELINE_CENTER);
-        tfSandwichSize.setPrefColumnCount(30);
-        tfSandwichSize.setEditable(false);
+ //create Size Of Sandwich TextField
+        Label sizeLbl = new Label("Size of Sandwich");
+        sizeLbl.setTextFill(Color.rgb(255,203,10));
+        sizeLbl.setStyle("-fx-font-weight: bold");
         
         //create Bread Type drop menu
+        Label breadTypeLbl = new Label("Bread Type:");
+        breadTypeLbl.setTextFill(Color.rgb(255,203,10));
+        breadTypeLbl.setStyle("-fx-font-weight: bold");
         ComboBox<String> cboBreadType = new ComboBox<>();
-        cboBreadType.getItems().addAll("Bread Type:----"
-                + "                                                                     ",
-                "Bread 1", "Bread 2", "Bread 3");
-        cboBreadType.setValue("Bread Type:----");
+        cboBreadType.setValue("Select Your Bread");
+        cboBreadType.setPrefWidth(250);
+        cboBreadType.getItems().addAll(
+            "9-Grain Wheat", "Italian", "Italian Herbs & Cheese",
+            "Honey Oat", "Jalapeno Cheese", "Monterey Cheddar",
+            "Parmesan Oregano", "Roasted Garlic", "Rosemary & Sea Salt");
+        BorderPane breadBox = new BorderPane();
+        breadBox.setLeft(breadTypeLbl);
+        breadBox.setRight(cboBreadType);
+        breadBox.setPadding(new Insets(10,10,10,10));
         
-        //create Bread Type drop menu
+        //create Meat Type drop menu
+        Label meatTypeLbl = new Label ("Meat Type: ");
+        meatTypeLbl.setTextFill(Color.rgb(255,203,10));
+        meatTypeLbl.setStyle("-fx-font-weight: bold");
         ComboBox<String> cboMeatType = new ComboBox<>();
-        cboMeatType.getItems().addAll("Meat Type:----"
-                + "                                                                      ",
-                "Meat 1", "Meat 2", "Meat 3");
-        cboMeatType.setValue("Meat Type:----");
+        cboMeatType.getItems().addAll(
+            "Turkey Breast", "Ham", "Chicken Breast", "Roast Beef",
+            "Tuna", "Salami", "Beefsteak", "Bacon", "Meatballs","Pepperoni",
+            "Turkey Bologna", "Shaved Steak");
+        cboMeatType.setValue("Select Your Meat");
+        cboMeatType.setPrefWidth(250);
+        BorderPane meatBox = new BorderPane();
+        meatBox.setLeft(meatTypeLbl);
+        meatBox.setRight(cboMeatType);
+        meatBox.setPadding(new Insets(10,10,10,10));
         
-        //create Bread Type drop menu
+        //create Cheese Type drop menu
+        Label cheeseTypeLbl = new Label("Cheese Type:");
+        cheeseTypeLbl.setTextFill(Color.rgb(255,203,10));
+        cheeseTypeLbl.setStyle("-fx-font-weight: bold");
         ComboBox<String> cboCheeseType = new ComboBox<>();
-        cboCheeseType.getItems().addAll("Cheese Type:----"
-                + "                                                                  ",
-                "Cheese 1", "Cheese 2", "Cheese 3");
-        cboCheeseType.setValue("Cheese Type:----");
-
+        cboCheeseType.getItems().addAll(
+            "American", "Monterey Cheddar", "Feta", "Mozzarella",
+            "Cheddar", "Pepperjack", "Provalone", "Swiss");
+       cboCheeseType.setValue("Select Your Cheese");
+       cboCheeseType.setPrefWidth(250);
+       BorderPane cheeseBox = new BorderPane();
+       cheeseBox.setLeft(cheeseTypeLbl);
+       cheeseBox.setRight(cboCheeseType);
+       cheeseBox.setPadding(new Insets(5,10,5,10));
+       
         //create size radio buttons
         RadioButton rbSmall = new RadioButton("Small");
+        rbSmall.setStyle("-fx-font-weight: bold");
+        rbSmall.setTextFill(Color.WHITE);
         RadioButton rbHalf = new RadioButton("Half");
+        rbHalf.setStyle("-fx-font-weight: bold");
+        rbHalf.setTextFill(Color.WHITE);
         RadioButton rbFull = new RadioButton("Full");
+        rbFull.setStyle("-fx-font-weight: bold");
+        rbFull.setTextFill(Color.WHITE);
         
         //add radio buttons to toggle group
         ToggleGroup group = new ToggleGroup();
@@ -68,42 +103,68 @@ public class Week14GroupProjectSubwayOrderSystem extends Application {
         rbFull.setToggleGroup(group);
         
         //create Veggie text field
-        TextField tfVeggies = new TextField("Veggies (Pick Up to Three)");
-        tfVeggies.setAlignment(Pos.BASELINE_CENTER);
-        tfVeggies.setPrefColumnCount(30);
-        tfVeggies.setEditable(false);
+        Label veggLbl = new Label("Veggies (Pick up to three)");
+        veggLbl.setTextFill(Color.rgb(255,203,10));
+        veggLbl.setStyle("-fx-font-weight: bold");
         
         //create Veggie Type 1 drop menu
         ComboBox<String> cboVeggieType1 = new ComboBox<>();
-        cboVeggieType1.getItems().addAll("Veggie 1:----", "Veggie 1", "Veggie 2", "Veggie 3");
-        cboVeggieType1.setValue("Veggie 1:----");
+        cboVeggieType1.getItems().addAll(
+            "Cucumbers", "Green Peppers", "Lettuce", "Red Onions",
+            "Spinach", "Tomatoes", "Banana Peppers", "Jalapenos",
+            "Black Olives", "Pickles");
+        cboVeggieType1.setValue("Veggie 1");
+        
         
         //create Veggie Type 2 drop menu
         ComboBox<String> cboVeggieType2 = new ComboBox<>();
-        cboVeggieType2.getItems().addAll("Veggie 2:----", "Veggie 1", "Veggie 2", "Veggie 3");
-        cboVeggieType2.setValue("Veggie 2:----");
+        cboVeggieType2.getItems().addAll(
+            "Cucumbers", "Green Peppers", "Lettuce", "Red Onions",
+            "Spinach", "Tomatoes", "Banana Peppers", "Jalapenos",
+            "Black Olives", "Pickles");
+        cboVeggieType2.setValue("Veggie 2");
         
         //create Veggie Type 3 drop menu
         ComboBox<String> cboVeggieType3 = new ComboBox<>();
-        cboVeggieType3.getItems().addAll("Veggie 3:----", "Veggie 1", "Veggie 2", "Veggie 3");
-        cboVeggieType3.setValue("Veggie 3:----");
+        cboVeggieType3.getItems().addAll(
+            "Cucumbers", "Green Peppers", "Lettuce", "Red Onions",
+            "Spinach", "Tomatoes", "Banana Peppers", "Jalapenos",
+            "Black Olives", "Pickles");
+        cboVeggieType3.setValue("Veggie 3");
+        HBox hBoxVeggies = new HBox(5);
+        hBoxVeggies.setAlignment(Pos.BASELINE_LEFT);
+        hBoxVeggies.getChildren().addAll(cboVeggieType1, cboVeggieType2, cboVeggieType3);
+        hBoxVeggies.setPadding(new Insets(10,10,5,10));
         
-        //create Veggie Type 3 drop menu
+        //create Sauce Type drop menu
+        Label sauceLbl = new Label("Sauce Type:");
+        sauceLbl.setTextFill(Color.rgb(255,203,10));
+        sauceLbl.setStyle("-fx-font-weight: bold");
         ComboBox<String> cboSauceType = new ComboBox<>();
-        cboSauceType.getItems().addAll("Sauce Type:----"
-                + "                                                                    ",
-                "Sauce 1", "Sauce 2", "Sauce 3");
-        cboSauceType.setValue("Sauce Type:----");
+        cboSauceType.setPrefWidth(250);
+        cboSauceType.getItems().addAll(
+            "Chipotle Southwest", "Light Mayonnaise", "Mayonnaise", "Ranch",
+            "Oil", "Subway Vinaigrette", "Mustart", "Vinegar", "Sweet Onion",
+            "Barbecue", "Buffalo", "Creamy Italian", "Golden Italian",
+            "Savory Ceasar", "Sriracha", "Tzatziki Cucumber");
+        cboSauceType.setValue("Pick Your Sauce");
+        BorderPane sauceBox = new BorderPane();
+        sauceBox.setLeft(sauceLbl);
+        sauceBox.setRight(cboSauceType);
+        sauceBox.setPadding(new Insets(10,10,5,10));
         
         //create Salt & Pepper TextField
-        TextField tfSaltNPepper = new TextField("Salt & Pepper");
-        tfSaltNPepper.setAlignment(Pos.BASELINE_CENTER);
-        tfSaltNPepper.setPrefColumnCount(16);
-        tfSaltNPepper.setEditable(false);
+        Label spLbl = new Label ("Salt & Pepper");
+        spLbl.setTextFill(Color.rgb(255,203,10));
+        spLbl.setStyle("-fx-font-weight: bold");
         
         //create Salt & Pepper radio buttons
         RadioButton rbYes = new RadioButton("Yes");
+        rbYes.setStyle("-fx-font-weight: bold");
+        rbYes.setTextFill(Color.WHITE);
         RadioButton rbNo = new RadioButton("No");
+        rbNo.setStyle("-fx-font-weight: bold");
+        rbNo.setTextFill(Color.WHITE);
         
         //add radio buttons to toggle group
         ToggleGroup grpSaltNPepper = new ToggleGroup();
@@ -111,45 +172,47 @@ public class Week14GroupProjectSubwayOrderSystem extends Application {
         rbNo.setToggleGroup(grpSaltNPepper);
         
         //create HBox for Salt & Pepper tf and rb's.
-        HBox hBoxSaltNPepper = new HBox(5);
+        HBox hBoxSaltNPepper = new HBox(50);
         hBoxSaltNPepper.setAlignment(Pos.BASELINE_LEFT);
-        hBoxSaltNPepper.getChildren().addAll(tfSaltNPepper, rbYes, rbNo);
-        
-        //create HBox for Veggie Types
-        HBox hBoxVeggies = new HBox(5);
-        hBoxVeggies.setAlignment(Pos.BASELINE_LEFT);
-        hBoxVeggies.getChildren().addAll(cboVeggieType1, cboVeggieType2, cboVeggieType3);
-
+        hBoxSaltNPepper.getChildren().addAll(spLbl, rbYes, rbNo);
+        hBoxSaltNPepper.setPadding(new Insets(10,10,5,10));
+       
         //create HBox for Menu Options
         HBox hbMenuOptions = new HBox(5);
         hbMenuOptions.setAlignment(Pos.BASELINE_LEFT);
-        hbMenuOptions.getChildren().add(tfSandwichSize);
+        hbMenuOptions.getChildren().add(sizeLbl);
+        hbMenuOptions.setPadding(new Insets(10,10,5,10));
         
         //create Size of Sandwhich radio button HBox
-        HBox hBoxSandwhichSize = new HBox(5);
+        HBox hBoxSandwhichSize = new HBox(75);
         hBoxSandwhichSize.setAlignment(Pos.BASELINE_LEFT);
         hBoxSandwhichSize.getChildren().addAll(rbSmall, rbHalf, rbFull);
+        hBoxSandwhichSize.setPadding(new Insets(5,25,5,25));
         
-        //create HBox for tfVeggies
+        //create HBox for Veggies Label
         HBox hBoxtfVeggies = new HBox(5);
         hBoxtfVeggies.setAlignment(Pos.BASELINE_LEFT);
-        hBoxtfVeggies.getChildren().addAll(tfVeggies);
+        hBoxtfVeggies.getChildren().addAll(veggLbl);
+        hBoxtfVeggies.setPadding(new Insets(10,5,2,10));
 
         //create VBox and add all menu options
         VBox vBoxMenu = new VBox();
-        vBoxMenu.getChildren().addAll(hbMenuOptions, hBoxSandwhichSize, cboBreadType, 
-                cboMeatType, cboCheeseType, hBoxtfVeggies, hBoxVeggies,
-                cboSauceType, hBoxSaltNPepper);
+        vBoxMenu.getChildren().addAll(hbMenuOptions, hBoxSandwhichSize, breadBox, 
+                meatBox, cheeseBox, hBoxtfVeggies, hBoxVeggies,
+                sauceBox, hBoxSaltNPepper);
+        String style = "-fx-background-color: rgb(0,151,67);";
+        vBoxMenu.setStyle(style);
         
         //create subway logo
         ImageView imageView = new ImageView(new Image(
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoWrVEYcm36WCLyYgENRhkwwIl4x9IgQqneFFoIS30vHm4_2QK"));
+        HBox imageHBox = new HBox(imageView);
+        imageHBox.setAlignment(Pos.BASELINE_CENTER);
         
         //create Size Of Sandwich TextField
-        TextField tfYourSandwich = new TextField("Your Sandwich");
-        tfYourSandwich.setAlignment(Pos.BASELINE_CENTER);
-        tfYourSandwich.setPrefColumnCount(30);
-        tfYourSandwich.setEditable(false);
+        Label sandwichSummaryLbl = new Label("Your Sandwich");        
+        HBox yourSandwichHeader = new HBox(sandwichSummaryLbl);
+        yourSandwichHeader.setAlignment(Pos.BASELINE_CENTER);
         
         //create text area 
         //(Should probably be added to a scrollpane)
@@ -163,7 +226,9 @@ public class Week14GroupProjectSubwayOrderSystem extends Application {
         
         //create vbox for subway logo, text feild, and text area.
         VBox rightSideVBox = new VBox();
-        rightSideVBox.getChildren().addAll(imageView, tfYourSandwich, taSandwichInfo);
+        rightSideVBox.getChildren().addAll(imageHBox, yourSandwichHeader, taSandwichInfo);
+        String rightBackground = "-fx-background-color: rgb(255,255,255);";
+        rightSideVBox.setStyle(rightBackground);
         
         //create HBox for vBox Right
         HBox RightHBoxForVBox = new HBox(5);
@@ -179,17 +244,18 @@ public class Week14GroupProjectSubwayOrderSystem extends Application {
 
         //create scene
         Scene scene = new Scene(LeftAndRightHBoxes, 775, 500);
-        primaryStage.setTitle("Week 14 Group Project: Subway Order System");
+        primaryStage.setTitle("Subway: Eat Fresh");
         primaryStage.setScene(scene);
         primaryStage.show();
 
+
         //set radio button actions 
         //(NOT PERMANENT)
-        rbSmall.setOnAction(e -> tfSandwichSize.setAlignment(Pos.BASELINE_LEFT));
-        rbHalf.setOnAction(e -> tfSandwichSize.setAlignment(Pos.BASELINE_CENTER));
-        rbFull.setOnAction(e -> tfSandwichSize.setAlignment(Pos.BASELINE_RIGHT));
-        rbYes.setOnAction(e -> tfSaltNPepper.setAlignment(Pos.BASELINE_LEFT));
-        rbNo.setOnAction(e -> tfSaltNPepper.setAlignment(Pos.BASELINE_RIGHT));
+//        rbSmall.setOnAction(e -> tfSandwichSize.setAlignment(Pos.BASELINE_LEFT));
+//        rbHalf.setOnAction(e -> tfSandwichSize.setAlignment(Pos.BASELINE_CENTER));
+//        rbFull.setOnAction(e -> tfSandwichSize.setAlignment(Pos.BASELINE_RIGHT));
+//        rbYes.setOnAction(e -> tfSaltNPepper.setAlignment(Pos.BASELINE_LEFT));
+//        rbNo.setOnAction(e -> tfSaltNPepper.setAlignment(Pos.BASELINE_RIGHT));
     }//end public void start(Stage primaryStage)
     
     public static void main(String[] args) {
