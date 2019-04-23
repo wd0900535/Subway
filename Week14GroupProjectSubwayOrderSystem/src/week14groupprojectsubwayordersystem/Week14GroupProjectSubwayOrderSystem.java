@@ -191,4 +191,8 @@ public class Week14GroupProjectSubwayOrderSystem extends Application {
         rbYes.setOnAction(e -> tfSaltNPepper.setAlignment(Pos.BASELINE_LEFT));
         rbNo.setOnAction(e -> tfSaltNPepper.setAlignment(Pos.BASELINE_RIGHT));
     }//end public void start(Stage primaryStage)
+    
+    public static void main(String[] args) {
+        launch(args);   
+    }
 }//end public class Week14GroupProjectSubwayOrderSystem extends Application
