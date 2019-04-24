@@ -190,7 +190,7 @@ public class Week14GroupProjectSubwayOrderSystem extends Application {
         hbMenuOptions.setPadding(new Insets(10,10,5,10));
         
         // Create Size of Sandwhich radio button HBox
-        HBox hBoxSandwhichSize = new HBox(75);
+        HBox hBoxSandwhichSize = new HBox(50);
         hBoxSandwhichSize.setAlignment(Pos.BASELINE_LEFT);
         hBoxSandwhichSize.getChildren().addAll(rbSmall, rbHalf, rbFull);
         hBoxSandwhichSize.setPadding(new Insets(5,25,5,25));
