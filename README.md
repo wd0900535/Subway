@@ -1,7 +1,7 @@
 <h2>Subway Order System for CIS171</h2>
 <p>This is our group project for CIS171</p>
 
-<img src="output.PNG">
+<img src="Week14GroupProjectSubwayOrderSystem/README.jpg">
 
 <h2>Problem</h2>
 <p>We were given the problem to create an Subway Ordering System using Java and JavaFX. We were required to include these fields:</p>
